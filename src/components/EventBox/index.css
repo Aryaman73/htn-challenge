@@ -1,0 +1,36 @@
+.box {
+    display: grid;
+    grid-template-columns: 90% 10%;
+    background-color: white;
+    margin: 20px 100px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.workshop {
+    border: 3px solid #345875;
+}
+
+.tech_talk {
+    border: 3px solid #4EA699;
+}
+
+.activity {
+    border: 3px solid #832161;
+}
+
+/* TODO: Icon Source: https://www.svgrepo.com/collection/pixelarticons-interface-icons/ */
+.icon {
+    display: flex;
+    justify-content: right;
+}
+
+.event-name {
+    font-weight: bold;
+}
+
+/* MODAL */
+.modal-heading {
+    font-size: 28px;
+    font-weight: bold;
+}
