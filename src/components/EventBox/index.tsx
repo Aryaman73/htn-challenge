@@ -20,14 +20,30 @@ function EventBox({ event }: Props) {
     const isTechTalk = event.event_type === "tech_talk";
     const isActivity = event.event_type === "activity";
 
+    // Modal Functionality
     const [modalOpen, setModalOpen] = useState(false);
 
     const handleCloseModal = () => {
         setModalOpen(false);
     }
 
-    // TODO: for accessibility
-    Modal.setAppElement("#root");
+    Modal.setAppElement("#root"); // For Accessibility: https://reactcommunity.org/react-modal/accessibility/
+
+    // Reference: https://reactcommunity.org/react-modal/styles/
+    const modalStyle = {
+        content: {
+            border: (() => {
+                if (isWorkshop) {
+                    return "3px solid #345875";
+                } else if (isTechTalk) {
+                    return "3px solid #4EA699";
+                } else if (isActivity) {
+                    return "3px solid #832161";
+                }
+            })(),
+            borderRadius: "20px",
+        }
+    }
 
     return (
         <>
@@ -55,30 +71,29 @@ function EventBox({ event }: Props) {
                 isOpen={modalOpen}
                 contentLabel={event.name}
                 onRequestClose={handleCloseModal}
+                style={modalStyle}
             >
                 <p className="modal-heading"> {event.name} </p>
-                <p> {event.event_type} </p>
-                <p> Start Time: {moment(event.start_time).format('dddd, MMMM Do, h:mm A')}</p>
-                <p> End Time: {moment(event.end_time).format('dddd, MMMM Do, h:mm A')}</p>
+                <p> <b> Start Time: </b> {moment(event.start_time).format('dddd, MMMM Do, h:mm A')}</p>
+                <p> <b> End Time: </b> {moment(event.end_time).format('dddd, MMMM Do, h:mm A')}</p>
                 <p> {event.description} </p>
-                <p> Speakers: </p>
                 {/* TODO: what if no speakers... */}
-                {event?.speakers?.map((speaker: TSpeaker) => {
-                    return (
-                        <>
-                            <p> {speaker.name}</p>
-                            {/* Image is not always present... */}
-                            {speaker?.profile_pic && <img alt={`{speaker.name}-profile`} src={speaker?.profile_pic} />}
-                        </>
-                    )
-                })}
-                <p> {event.public_url}</p>
+                {event.speakers.length > 0 && (<>
+                    <p> <b> Speaker List </b> </p>
+                    {event.speakers?.map((speaker: TSpeaker) => {
+                        return (
+                            <>
+                                <p>{speaker.name}</p>
+                                {/* Image is not always present... */}
+                                {speaker?.profile_pic && <img className="profilePicture" alt={`{speaker.name}-profile`} src={speaker?.profile_pic} />}
+                            </>
+                        )
+                    })}
+                </>)
+                }
+                {event.public_url && <p> <b> Public URL: </b> {event.public_url}</p>}
                 {/* TODO: Private URL only if private */}
-                <p> {event.private_url}</p>
-
-
-
-
+                {event.private_url && <p> <b>Private URL: </b> {event.private_url}</p>}
             </Modal>
         </>
     );
