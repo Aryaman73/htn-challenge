@@ -2,6 +2,7 @@ import { useState } from "react";
 import moment from "moment";
 import Modal from "react-modal";
 import classNames from "classnames";
+import find from "lodash/find";
 
 import { ReactComponent as WorkshopSVG } from './workshop.svg';
 import { ReactComponent as ActivitySVG } from './activity.svg';
@@ -10,11 +11,12 @@ import { ReactComponent as TechTalkSVG } from './tech_talk.svg';
 import "./index.css";
 import { TSpeaker, TEvent } from "../../types/eventTypes";
 type Props = {
-    event: TEvent
+    event: TEvent,
+    eventList: TEvent[]
 };
 
 
-function EventBox({ event }: Props) {
+function EventBox({ event, eventList }: Props) {
 
     const isWorkshop = event.event_type === "workshop";
     const isTechTalk = event.event_type === "tech_talk";
@@ -77,7 +79,6 @@ function EventBox({ event }: Props) {
                 <p> <b> Start Time: </b> {moment(event.start_time).format('dddd, MMMM Do, h:mm A')}</p>
                 <p> <b> End Time: </b> {moment(event.end_time).format('dddd, MMMM Do, h:mm A')}</p>
                 <p> {event.description} </p>
-                {/* TODO: what if no speakers... */}
                 {event.speakers.length > 0 && (<>
                     <p> <b> Speaker List </b> </p>
                     {event.speakers?.map((speaker: TSpeaker) => {
@@ -92,8 +93,18 @@ function EventBox({ event }: Props) {
                 </>)
                 }
                 {event.public_url && <p> <b> Public URL: </b> {event.public_url}</p>}
-                {/* TODO: Private URL only if private */}
+                {/* TODO: Private URL only if private? */}
                 {event.private_url && <p> <b>Private URL: </b> {event.private_url}</p>}
+                {event?.related_events?.length > 0 && <p> <b>Related Events: </b> </p>}
+                {event?.related_events?.map((eventId) => {
+                    return (
+                        <div>
+                            {find(eventList, (i) => {
+                                return i.id === eventId;
+                            })?.name}
+                        </div>
+                    )
+                })}
             </Modal>
         </>
     );

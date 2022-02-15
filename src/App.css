@@ -2,7 +2,9 @@
   text-align: center;
 }
 
-/* TODO: Sub-file CSS */
+.main {
+  padding: 20px;
+}
 
 .button {
   background-color: white;
@@ -12,7 +14,12 @@
   width: 150px;
   border: 3px solid #E16B77;
   border-radius: 20px;
-  margin: 20px 20px 0 100px;
+  margin: 20px 2;
+}
+
+.button-menu {
+  display: flex;
+  margin: auto;
 }
 
 .button:hover {
@@ -20,5 +27,8 @@
   cursor: pointer;
 }
 .welcome-message {
+  display: flex;
+  margin-left: 24px;
+  align-items: center;
   font-weight: bold;
 }

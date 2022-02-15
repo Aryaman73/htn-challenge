@@ -1,11 +1,11 @@
+import logo from "../../assets/logo.svg";
 import "./index.css";
 
 function Header() {
     return (
         <div className="header">
-            <p>
-                HackTheNorth Schedule
-            </p>
+            <img className="logo" src={logo} alt="Logo" />
+            HackTheNorth Schedule
         </div>
     )
 }
