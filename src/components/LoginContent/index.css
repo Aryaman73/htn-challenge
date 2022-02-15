@@ -7,6 +7,8 @@
     height: 100%;
     border: 2px solid #183249;
     border-radius: 20px;
+  background: linear-gradient(#f3cbcf44, #d1dceb5b);
+
 
 }
 
@@ -24,6 +26,7 @@
 .login-button:hover {
     background-color: #faf6f1;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .login-logo {
@@ -48,4 +51,5 @@
 
 .login-input:hover {
     background-color: #faf6f1;
+    transition: 0.3s;
 }

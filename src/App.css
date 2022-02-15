@@ -25,7 +25,10 @@
 .button:hover {
   background-color: #faf6f1;
   cursor: pointer;
+  transition: 0.3s;
+
 }
+
 .welcome-message {
   display: flex;
   margin-left: 24px;

@@ -12,6 +12,7 @@
 .box:hover {
     background-color: #faf6f1;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .workshop {
@@ -31,6 +32,24 @@
     max-height: 125px;
 }
 
+.event-close-button {
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 20px;
+    width: 150px;
+    border: 3px solid #E16B77;
+    border-radius: 20px;
+    margin: 20px auto;
+    left: 200px;
+}
+
+.event-close-button:hover {
+    background-color: #faf6f1;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
 /* TODO: Icon Source: https://www.svgrepo.com/collection/pixelarticons-interface-icons/ */
 .icon {
     display: flex;
@@ -42,8 +61,26 @@
 }
 
 /* MODAL */
+.event-modal-box {
+    display: flex;
+    flex-direction: column;
+}
+
 .modal-heading {
     font-size: 28px;
     font-weight: bold;
     text-align: center;
+}
+
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 200ms ease-out;
+}
+
+.ReactModal__Overlay--after-open{
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+    opacity: 0;
 }

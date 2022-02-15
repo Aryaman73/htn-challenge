@@ -74,37 +74,48 @@ function EventBox({ event, eventList }: Props) {
                 contentLabel={event.name}
                 onRequestClose={handleCloseModal}
                 style={modalStyle}
+                closeTimeoutMS={200}
             >
-                <p className="modal-heading"> {event.name} </p>
-                <p> <b> Start Time: </b> {moment(event.start_time).format('dddd, MMMM Do, h:mm A')}</p>
-                <p> <b> End Time: </b> {moment(event.end_time).format('dddd, MMMM Do, h:mm A')}</p>
-                <p> {event.description} </p>
-                {event.speakers.length > 0 && (<>
-                    <p> <b> Speaker List </b> </p>
-                    {event.speakers?.map((speaker: TSpeaker) => {
+                <div className="event-modal-box">
+                    <h1 className="modal-heading"> {event.name} </h1>
+                    <p> <b> Start Time: </b> {moment(event.start_time).format('dddd, MMMM Do, h:mm A')}</p>
+                    <p> <b> End Time: </b> {moment(event.end_time).format('dddd, MMMM Do, h:mm A')}</p>
+                    <p> {event.description} </p>
+                    {event.speakers.length > 0 && (<>
+                        <div> <b> Speaker List </b> </div>
+                        {event.speakers?.map((speaker: TSpeaker) => {
+                            return (
+                                <>
+                                    <p>{speaker.name}</p>
+                                    {/* Image is not always present... */}
+                                    {speaker?.profile_pic && <img className="profilePicture" alt={`{speaker.name}-profile`} src={speaker?.profile_pic} />}
+                                </>
+                            )
+                        })}
+                    </>)
+                    }
+                    {event.public_url && <p> <b> Public URL: </b> {event.public_url}</p>}
+                    {/* TODO: Private URL only if private? */}
+                    {event.private_url && <p> <b>Private URL: </b> {event.private_url}</p>}
+                    {event?.related_events?.length > 0 && <p> <b>Related Events: </b> </p>}
+                    {event?.related_events?.map((eventId) => {
                         return (
-                            <>
-                                <p>{speaker.name}</p>
-                                {/* Image is not always present... */}
-                                {speaker?.profile_pic && <img className="profilePicture" alt={`{speaker.name}-profile`} src={speaker?.profile_pic} />}
-                            </>
+                            <div>
+                                {find(eventList, (i) => {
+                                    return i.id === eventId;
+                                })?.name}
+                            </div>
                         )
                     })}
-                </>)
-                }
-                {event.public_url && <p> <b> Public URL: </b> {event.public_url}</p>}
-                {/* TODO: Private URL only if private? */}
-                {event.private_url && <p> <b>Private URL: </b> {event.private_url}</p>}
-                {event?.related_events?.length > 0 && <p> <b>Related Events: </b> </p>}
-                {event?.related_events?.map((eventId) => {
-                    return (
-                        <div>
-                            {find(eventList, (i) => {
-                                return i.id === eventId;
-                            })?.name}
-                        </div>
-                    )
-                })}
+                    <button
+                        className="event-close-button"
+                        onClick={() => {
+                            setModalOpen(false);
+                        }}
+                    >
+                        Close Event
+                    </button>
+                </div>
             </Modal>
         </>
     );
