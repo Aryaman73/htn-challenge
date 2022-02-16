@@ -72,7 +72,7 @@ function App() {
             {isLoggedIn ? "Log Out" : "Log In"}
           </button>
           <div className="welcome-message">
-            {isLoggedIn && "Welcome, Hacker!"}
+            {isLoggedIn ? "Welcome, Hacker!" : "Not Logged In"}
           </div>
         </div>
         {loading && <p> Loading... </p>}
