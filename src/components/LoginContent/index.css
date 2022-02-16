@@ -8,8 +8,6 @@
     border: 2px solid #183249;
     border-radius: 20px;
   background: linear-gradient(#f3cbcf44, #d1dceb5b);
-
-
 }
 
 .login-button {
@@ -52,4 +50,13 @@
 .login-input:hover {
     background-color: #faf6f1;
     transition: 0.3s;
+}
+
+.login-invalid-credentials {
+    color: #E16B77;
+    margin: 20px;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 24px;
 }
