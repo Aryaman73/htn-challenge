@@ -2,8 +2,12 @@ import logo from "../../assets/logo.svg";
 
 import './index.css';
 
-// TODO: Not Any 😡
-function LoginContent({ setIsLoggedIn, setModal }: { setIsLoggedIn: any, setModal: any }) {
+type Props = {
+    setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>,
+    setModal: React.Dispatch<React.SetStateAction<boolean>>,
+}
+
+function LoginContent({ setIsLoggedIn, setModal }: Props) {
     return (
         <div className="login-main">
             <img className="login-logo" src={logo} alt="Logo" />

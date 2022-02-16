@@ -27,11 +27,6 @@
     border: 3px solid #832161;
 }
 
-.profilePicture {
-    max-width: 125px;
-    max-height: 125px;
-}
-
 .event-close-button {
     background-color: white;
     font-size: 16px;
@@ -53,7 +48,10 @@
 /* TODO: Icon Source: https://www.svgrepo.com/collection/pixelarticons-interface-icons/ */
 .icon {
     display: flex;
-    justify-content: right;
+}
+
+.icon-svg {
+    width: 40px;
 }
 
 .event-name {
@@ -63,13 +61,61 @@
 /* MODAL */
 .event-modal-box {
     display: flex;
+    justify-content: center;
     flex-direction: column;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .modal-heading {
     font-size: 28px;
     font-weight: bold;
     text-align: center;
+    text-decoration: underline;
+}
+
+.modal-subheading {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+    text-decoration: underline;
+}
+
+.modal-picture-box {
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin: auto;
+    margin-bottom: 20px;
+    width: min-content;
+    min-width: 100px;
+    background-color: #faf6f1;
+}
+
+.profilePicture {
+    max-width: 125px;
+    max-height: 125px;
+    margin-bottom: 20px;
+}
+
+.modal-external-link {
+    text-align: center;
+    color: black;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin: 20px auto;
+    text-decoration: none;
+}
+
+.modal-external-link:hover {
+    background-color: #faf6f1;
 }
 
 .ReactModal__Overlay {

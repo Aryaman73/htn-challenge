@@ -37,7 +37,7 @@ const EVENTS_QUERY = gql`
 function App() {
 
   // Login Modal Functionality
-  const [loginModalOpen, setLoginModalOpen] = useState(false);
+  const [loginModalOpen, setLoginModalOpen] = useState<boolean>(false);
 
   const handleCloseModal = () => {
     setLoginModalOpen(false);
@@ -46,7 +46,7 @@ function App() {
   Modal.setAppElement("#root"); // For Accessibility: https://reactcommunity.org/react-modal/accessibility/
 
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   const { loading, error, data } = useQuery(EVENTS_QUERY);
 
@@ -83,7 +83,7 @@ function App() {
             if (isLoggedIn || event?.permission === "public") {
               return (
                 <div>
-                  <EventBox event={event} eventList={orderedEvents} />
+                  <EventBox event={event} eventList={orderedEvents} isLoggedIn={isLoggedIn} />
                 </div>
               )
             } else {

@@ -1,4 +1,5 @@
 .header {
+    font-family: "RobotoBlack";
     position: sticky;
     display: flex;
     align-items: center;
@@ -6,7 +7,6 @@
     top: 0;
     height: 50px;
     background: white;
-    font-weight: bold;
     font-size: 24px;
     color: #345875;
     border: 2px solid #FAF4E9;

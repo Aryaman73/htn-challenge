@@ -12,11 +12,12 @@ import "./index.css";
 import { TSpeaker, TEvent } from "../../types/eventTypes";
 type Props = {
     event: TEvent,
-    eventList: TEvent[]
+    eventList: TEvent[],
+    isLoggedIn: boolean,
 };
 
 
-function EventBox({ event, eventList }: Props) {
+function EventBox({ event, eventList, isLoggedIn }: Props) {
 
     const isWorkshop = event.event_type === "workshop";
     const isTechTalk = event.event_type === "tech_talk";
@@ -63,9 +64,9 @@ function EventBox({ event, eventList }: Props) {
                     <p> {moment(event.start_time).format('dddd, MMMM Do, h:mm A')}</p>
                 </div>
                 <div className="icon">
-                    {isWorkshop && <WorkshopSVG color="#345875" width="40px" />}
-                    {isActivity && <ActivitySVG color="#832161" width="40px" />}
-                    {isTechTalk && <TechTalkSVG color="#4EA699" width="40px" />}
+                    {isWorkshop && <WorkshopSVG color="#345875" className="icon-svg" />}
+                    {isActivity && <ActivitySVG color="#832161" className="icon-svg" />}
+                    {isTechTalk && <TechTalkSVG color="#4EA699" className="icon-svg" />}
                 </div>
             </div>
 
@@ -81,31 +82,36 @@ function EventBox({ event, eventList }: Props) {
                     <p> <b> Start Time: </b> {moment(event.start_time).format('dddd, MMMM Do, h:mm A')}</p>
                     <p> <b> End Time: </b> {moment(event.end_time).format('dddd, MMMM Do, h:mm A')}</p>
                     <p> {event.description} </p>
+                    {event.public_url && <a className="modal-external-link" href={event.public_url} target="_blank" rel="noreferrer"> <b> Public URL: </b> {event.public_url}</a>}
+                    {isLoggedIn && event.private_url && <a className="modal-external-link" href={event.private_url} target="_blank" rel="noreferrer"> <b>Private URL: </b> {event.private_url}</a>}
+
                     {event.speakers.length > 0 && (<>
-                        <div> <b> Speaker List </b> </div>
+                        <h3 className="modal-subheading"> Speaker List </h3>
                         {event.speakers?.map((speaker: TSpeaker) => {
                             return (
-                                <>
+                                <div className="modal-picture-box">
                                     <p>{speaker.name}</p>
-                                    {/* Image is not always present... */}
                                     {speaker?.profile_pic && <img className="profilePicture" alt={`{speaker.name}-profile`} src={speaker?.profile_pic} />}
-                                </>
+                                </div>
                             )
                         })}
                     </>)
                     }
-                    {event.public_url && <p> <b> Public URL: </b> {event.public_url}</p>}
-                    {/* TODO: Private URL only if private? */}
-                    {event.private_url && <p> <b>Private URL: </b> {event.private_url}</p>}
-                    {event?.related_events?.length > 0 && <p> <b>Related Events: </b> </p>}
+                    {event?.related_events?.length > 0 && <h3 className="modal-subheading"> Related Events  </h3>}
                     {event?.related_events?.map((eventId) => {
-                        return (
-                            <div>
-                                {find(eventList, (i) => {
-                                    return i.id === eventId;
-                                })?.name}
-                            </div>
-                        )
+                        const relatedEvent = find(eventList, (i) => {
+                            return i.id === eventId;
+                        })
+                        if (relatedEvent && (isLoggedIn || relatedEvent?.permission === "public")) {
+                            return (
+                                <div>
+                                    <EventBox event={relatedEvent} eventList={eventList} isLoggedIn={isLoggedIn} />
+                                </div>
+                            )
+                        }
+                        else {
+                            return null;
+                        }
                     })}
                     <button
                         className="event-close-button"

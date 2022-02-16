@@ -5,7 +5,7 @@ function Header() {
     return (
         <div className="header">
             <img className="logo" src={logo} alt="Logo" />
-            HackTheNorth Schedule
+            Hack the North Schedule
         </div>
     )
 }
