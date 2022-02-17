@@ -1,5 +1,9 @@
 Hey! This is my submission for the Hack the North Frontend challenge. If you have any issues running the project, please contact me!
 
+**Site is Live at:** https://620dd0ff170277260eff0ccc--romantic-darwin-620e47.netlify.app/
+
+(Hosted using Netlify)
+
 # Running the project:
 This is a React app that you can run using npm. At the base directory, run: 
 
