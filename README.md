@@ -1,10 +1,13 @@
 Hey! This is my submission for the Hack the North Frontend challenge have any issues running the project, please contact me!
 
 # Running the project:
-In case you
-This is a React app that you can run using npm. At the base directory, run: npm install
+This is a React app that you can run using npm. At the base directory, run: 
 
-To run the app: npm run
+`npm install`
+
+To run the app: 
+
+`npm start`
 
 The Node version I’m running is  v16, but it should also work on v14 . I’ve tested this on Mac and Linux, and on Firefox and Chromium browsers.
 
@@ -12,6 +15,7 @@ The Node version I’m running is  v16, but it should also work on v14 . I’ve 
 # Create React App default ReadMe:
 
 Just in case 🙃
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
