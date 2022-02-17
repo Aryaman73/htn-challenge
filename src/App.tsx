@@ -38,20 +38,17 @@ function App() {
 
   // Login Modal Functionality
   const [loginModalOpen, setLoginModalOpen] = useState<boolean>(false);
-
   const handleCloseModal = () => {
     setLoginModalOpen(false);
   }
-
   Modal.setAppElement("#root"); // For Accessibility: https://reactcommunity.org/react-modal/accessibility/
-
 
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   const { loading, error, data } = useQuery(EVENTS_QUERY);
 
   const orderedEvents = sortBy(data?.sampleEvents, 'start_time');
-  console.log(orderedEvents);
+  // console.log(orderedEvents);
 
   return (
     <>

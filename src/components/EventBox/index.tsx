@@ -64,6 +64,7 @@ function EventBox({ event, eventList, isLoggedIn }: Props) {
                     <p> {moment(event.start_time).format('dddd, MMMM Do, h:mm A')}</p>
                 </div>
                 <div className="icon">
+                    {/* Icon Source: https://www.svgrepo.com/collection/pixelarticons-interface-icons/ */}
                     {isWorkshop && <WorkshopSVG color="#345875" className="icon-svg" />}
                     {isActivity && <ActivitySVG color="#832161" className="icon-svg" />}
                     {isTechTalk && <TechTalkSVG color="#4EA699" className="icon-svg" />}
