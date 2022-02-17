@@ -1,4 +1,4 @@
-Hey! This is my submission for the Hack the North Frontend challenge have any issues running the project, please contact me!
+Hey! This is my submission for the Hack the North Frontend challenge. If you have any issues running the project, please contact me!
 
 # Running the project:
 This is a React app that you can run using npm. At the base directory, run: 
