@@ -21,14 +21,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(#d1dceb, #f3cbcf81);
-  /* TODO: */
-  /* animation: gradient 15s ease infinite;
-  --webkit-animation: gradient 15s ease infinite;
-  --moz-osx-animation: gradient 15s ease infinite; */
+  background: linear-gradient(-45deg, #ee775250, #e73c7e50, #23a6d550, #23d5ab50);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
 }
 
-/* @keyframes gradient {
+@keyframes gradient {
 	0% {
 		background-position: 0% 50%;
 	}
@@ -38,7 +36,7 @@ body {
 	100% {
 		background-position: 0% 50%;
 	}
-} */
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

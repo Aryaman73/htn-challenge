@@ -7,7 +7,21 @@
     height: 100%;
     border: 2px solid #183249;
     border-radius: 20px;
-  background: linear-gradient(#f3cbcf44, #d1dceb5b);
+    background: linear-gradient(-45deg, #ee775275, #e73c7e75, #23a6d575, #23d5ab75);
+    background-size: 400% 400%;
+    animation: gradient 5s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 .login-button {

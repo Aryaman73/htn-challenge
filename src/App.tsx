@@ -75,8 +75,8 @@ function App() {
             {isLoggedIn ? "Welcome, Hacker!" : "Not Logged In"}
           </div>
         </div>
-        {loading && <p> Loading... </p>}
-        {error && <p> Error :( </p>}
+        {loading && <div className="loading-splashscreen"> Loading... </div>}
+        {error && <div className="loading-splashscreen"> Error </div>}
         {!loading && !error && data && (
           orderedEvents?.map((event: TEvent) => {
 
